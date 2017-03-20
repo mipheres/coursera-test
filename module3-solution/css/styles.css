@@ -1,0 +1,19 @@
+#header-nav {
+  background-color: #f6b319;
+  border-radius: 0;
+  border: 0;
+}
+
+#chicken{
+  float:none;
+  background-color: grey;
+}
+
+#collapsable-nav li{
+  text-align: center;
+  background-color: yellow;
+}
+
+.row{
+  margin:0 auto;
+}
