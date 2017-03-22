@@ -12,6 +12,11 @@
 #collapsable-nav li{
   text-align: center;
   background-color: yellow;
+  border-style: inset;
+}
+
+.navbar-nav {
+  margin: 0px -15px;
 }
 
 .row{
