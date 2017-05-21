@@ -12,17 +12,21 @@ function NarrowItDownController(MenuSearchServiceFactory){
   var list=this
   var service=MenuSearchServiceFactory()
 
-  list.findItems=function (){
-    var foundArray=service.getMatchedMenuItems(list.searchTerm)
-    //foundArray=[1,2,3,4,5,6]
-    list.found=foundArray;
-    list.testarray=list.found
+  list.findItems=function (searchTerm){
+    var promise=service.getMatchedMenuItems(searchTerm)
+    promise.then(function(response){
+      list.found=response;
+    })
+  }
+
+  list.removeItem=function(index){
+    list.found.splice(index,1)
   }
 
 }
 
 function MenuSearchService(searchTerm,$http, ApiBasePath) {
-  var service=this;
+  var service=this
 
   service.getMatchedMenuItems=function (searchTerm){
     return $http({url: ApiBasePath + "menu_items.json"}).then(function (result) {
@@ -34,7 +38,7 @@ function MenuSearchService(searchTerm,$http, ApiBasePath) {
         }
       };
 
-      return foundItems//Array
+      return foundItems
     });
   }
 }
@@ -48,11 +52,12 @@ function MenuSearchServiceFactory($http,ApiBasePath){
 }
 
 function FoundItems(){
-  // console.log("Directive FoundItems")
   var ddo={
-    templateUrl: 'test.html',
+    restrict: "E",
+    templateUrl: 'filteredItems.html',
     scope: {
-      myFoundItems: '=localDirectiveScope'
+      foundItems: '<',
+      onRemove: '&'
     }
   };
 
