@@ -54,7 +54,7 @@ function MenuSearchServiceFactory($http,ApiBasePath){
 function FoundItems(){
   var ddo={
     restrict: "E",
-    templateUrl: 'filteredItems.html',
+    templateUrl: 'test.html',
     scope: {
       foundItems: '<',
       onRemove: '&'
