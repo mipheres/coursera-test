@@ -58,10 +58,24 @@ function FoundItems(){
     scope: {
       foundItems: '<',
       onRemove: '&'
-    }
+    },
+    controller: FoundItemsDirectiveController,
+    controllerAs: 'foundList',
+    bindToController: true
   };
 
   return ddo
 }
+
+function FoundItemsDirectiveController() {
+      var foundList = this;
+
+      foundList.checkListEmpty = function() {
+          if (foundList.foundItems != undefined && foundList.foundItems.length < 1) {
+              return true;
+          }
+          return false;
+      };
+  }
 
 })();
