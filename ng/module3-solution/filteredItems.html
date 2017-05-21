@@ -2,7 +2,7 @@
 <ul>
   <li ng-repeat="item in foundList.foundItems">
     {{ item.name }} {{ item.short_name }} {{ item.description }}
-    <button ng-click="onRemove({index: $index});">Don't want this one!</button>
+    <button ng-click="foundList.onRemove({index: $index});">Don't want this one!</button>
   </li>
 </ul>
-<div class="error" ng-if="foundItems.checkListEmpty()"> Nothing found </div>
+<div class="error" ng-if="foundList.checkListEmpty()"> Nothing found </div>
